@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igreja Batista Regular de Lagoa Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* Cabeçalho e menu - ÁREA CORRIGIDA */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            flex-shrink: 0;
+            max-width: 50%;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            color: #1a4c7b;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        nav {
+            margin-left: 40px;
+            flex-shrink: 1;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        nav ul li {
+            margin: 0;
+            flex: 1;
+            text-align: center;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+            display: block;
+        }
+        
+        nav ul li a:hover {
+            color: #1a4c7b;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #1a4c7b;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Banner principal */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 90px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            font-weight: 500;
+        }
+        
+        .hero .address {
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            font-weight: 500;
+            background-color: rgba(26, 76, 123, 0.8);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a4c7b;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: #143a5f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Seção de boas-vindas */
+        .welcome {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .welcome h2 {
+            font-size: 2.5rem;
+            color: #1a4c7b;
+            margin-bottom: 30px;
+        }
+        
+        .welcome p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #1a4c7b;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        footer p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Menu responsivo */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+                padding: 5px 2px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul li a {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.4s;
+                margin-left: 0;
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+                flex: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+            
+            .hero .address {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+                margin-right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero .address {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .logo h1 {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMjgiIHN0cm9rZT0iIzFBNEM3QiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0zOC40IDIzLjJDMzQuNCAxOS4yIDI5LjIgMTcgMjQgMTdTMTMuNiAxOS4yIDkuNiAyMy4yIiBzdHJva2U9IiMxQTRDN0IiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNOS42IDM2LjhDMTMuNiA0MC44IDE4LjggNDMgMjQgNDNTMzQuNCA0MC44IDM4LjQgMzYuOCIgc3Ryb2tlPSIjMUE0QzdCIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTIxLjIgMjMuMkwzOC40IDQwLjQiIHN0cm9rZT0iIzFBNEM3QiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yMS4yIDQwLjRMMzguNCAyMy4yIiBzdHJva2U9IiMxQTRDN0IiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="Logo Igreja Batista Regular de Lagoa Verde">
+                <h1>Igreja Batista Regular de Lagoa Verde</h1>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../quem-somos/index.html">Quem Somos</a></li>
+                    <li><a href="../Ministérios/index.html">Ministérios</a></li>
+                    <li><a href="../Horarios/index.html">Horários</a></li>
+                    <li><a href="../localização/index.html">Localização</a></li>
+                    <li><a href="../contacto/index.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Venha nos visitar!</h2>
+            <p>Igreja Batista Regular de Lagoa Verde</p>
+            <div class="address">Duraje de Casas / 565 | Pelotas / RS</div>
+            <a href="../localização/index.html" class="btn">Como chegar</a>
+        </div>
+    </section>
+
+    <section class="welcome">
+        <h2>Bem-vindo à nossa igreja</h2>
+        <p>Somos uma comunidade de fé comprometida com o ensino da Palavra de Deus, a comunhão dos santos e a proclamação do Evangelho de Jesus Cristo. Venha fazer parte da nossa família!</p>
+        <p>Em breve mais informações estarão disponíveis em nossas páginas.</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ibrlagoaverde/photos?locale=pt_BR" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ibrlagoaverde/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@IBRLagoaVerde" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+            <p>Duraje de Casas / 565 | Pelotas / RS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+        
+        // Adicionar sombra ao header quando scrollar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

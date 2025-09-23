@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização - Igreja Batista Regular de Lagoa Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* Cabeçalho e menu */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            flex-shrink: 0;
+            max-width: 50%;
+        }
+        
+        .logo img {
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            color: #1a4c7b;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        
+        .logo .verse {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 2px;
+            line-height: 1.2;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        nav {
+            margin-left: 40px;
+            margin-right: 70px;
+            flex-shrink: 1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            color: #1a4c7b;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #1a4c7b;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Botão de tema */
+        .theme-toggle {
+             position: absolute;
+             right: -60px;
+             top: 50%;
+             transform: translateY(-50%);
+             width: 30px;
+             height: 30px;
+             border: 1px solid #007bff;
+             border-radius: 50%;
+             background: white;
+             color: #007bff;
+             font-size: 18px;
+             cursor: pointer;
+             padding: 0;
+             outline: none;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .theme-toggle span {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             width: 100%;
+             height: 100%;
+             line-height: 1;
+             font-size: 18px;
+             position: relative;
+             top: 0px;
+         }
+
+        .theme-toggle:hover {
+            background-color: #1a4c7b;
+            color: white;
+        }
+
+        /* Tema escuro */
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme header {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .logo h1 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .logo .verse {
+            color: #b0b0b0;
+        }
+
+        body.dark-theme nav ul li a {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme nav ul li a:hover {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle {
+            border-color: #4a9eff;
+            color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle:hover {
+            background-color: #4a9eff;
+            color: #1a1a1a;
+        }
+
+        body.dark-theme .address-info {
+            background-color: #2d2d2d;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .address-info h2 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .address-details {
+            color: #ffffff;
+        }
+
+        body.dark-theme .page-header h1 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .reference {
+            background-color: #3a3a3a;
+            border-left-color: #4a9eff;
+            color: #ffffff;
+        }
+
+        body.dark-theme footer {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+        }
+        
+        /* Conteúdo principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 140px auto 60px;
+            padding: 0 8%;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #1a4c7b;
+            margin-bottom: 20px;
+        }
+        
+        .location-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .map-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        
+        .address-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .address-info h2 {
+            color: #1a4c7b;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .address-details {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .address-details p {
+            margin-bottom: 15px;
+        }
+        
+        .reference {
+            background-color: #f5f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #1a4c7b;
+        }
+        
+        .reference p {
+            margin: 0;
+            font-style: italic;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #1a4c7b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .map-btn:hover {
+            background-color: #143a5f;
+            transform: translateY(-2px);
+        }
+        
+        .map-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #1a4c7b;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-social {
+            margin-bottom: 20px;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+        
+        .footer-social a:hover {
+            transform: translateY(-5px);
+        }
+        
+        footer p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Menu responsivo */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            nav ul li a {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul li {
+                margin-left: 12px;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Ocultar texto da igreja no mobile - manter apenas logo e menu */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo {
+                max-width: none;
+            }
+            
+            .logo img {
+                margin-right: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.4s;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                right: 15px;
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul li {
+                margin: 12px 0;
+                margin-left: 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .map-container iframe {
+                height: 350px;
+            }
+            
+            .address-details {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .map-container iframe {
+                height: 300px;
+            }
+            
+            .address-info {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .map-btn {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+                right: 10px;
+            }
+            
+            nav {
+                margin-right: 0;
+            }
+            
+            .map-container iframe {
+                height: 250px;
+            }
+            
+            .address-details {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../logo/logo-igreja.png" alt="Logo Igreja Batista Regular de Lagoa Verde">
+                <div>
+                    <h1>Igreja Batista Regular de Lagoa Verde</h1>
+                    <p class="verse">"Alegrei-me quando me disseram: Vamos à casa do Senhor" Salmos 122:1</p>
+                </div>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../quem-somos/index.html">Quem Somos</a></li>
+                    <li><a href="../Ministérios/index.html">Ministérios</a></li>
+                    <li><a href="../Horarios/index.html">Horários</a></li>
+                    <li><a href="../localização/index.html" class="active">Localização</a></li>
+                    <li><a href="../contacto/index.html">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" style="display: none;">
+                <span id="theme-icon">&#x263C;</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Localização</h1>
+        </div>
+        
+        <div class="location-container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.924316831206!2d-60.004317925583!3d-3.131249840237345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c0552e51b748d%3A0x7e394e0c87c7c4d0!2sR.%20S%C3%A3o%20Vicente%2C%2074%20-%20S%C3%A3o%20L%C3%A1zaro%2C%20Manaus%20-%20AM%2C%2069073-010!5e0!3m2!1spt-BR!2sbr!4v1698765432100!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div class="address-info">
+                <h2>Nossa Localização</h2>
+                <div class="address-details">
+                    <p><strong>Endereço:</strong> R. São Vicente, 74 - São Lázaro, Manaus - AM, 69073-010</p>
+                    <p><strong>Bairro:</strong> São Lázaro</p>
+                    <p><strong>Cidade:</strong> Manaus - AM</p>
+                    
+                    <div class="reference">
+                        <p><strong>Ponto de referência:</strong> Em frente ao Posto de gasolina Atem Koka II</p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="https://www.google.com/maps/dir//R.+S%C3%A3o+Vicente,+74+-+S%C3%A3o+L%C3%A1zaro,+Manaus+-+AM,+69073-010" class="map-btn" target="_blank">
+                        <i class="fas fa-route"></i> Traçar rota
+                    </a>
+                    <a href="https://www.google.com/maps/place/R.+S%C3%A3o+Vicente,+74+-+S%C3%A3o+L%C3%A1zaro,+Manaus+-+AM,+69073-010" class="map-btn" target="_blank">
+                        <i class="fab fa-google"></i> Abrir no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://www.facebook.com/ibrlagoaverde/photos?locale=pt_BR" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ibrlagoaverde/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@IBRLagoaVerde" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+            <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+        
+        // Adicionar sombra ao header quando scrollar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Função para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+            }
+        });
+    </script>
+</body>
+</html>
