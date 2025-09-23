@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministérios - Igreja Batista Regular de Lagoa Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Tema escuro */
+        body.dark-theme {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme header {
+            background: rgba(44, 62, 80, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        body.dark-theme .logo {
+            color: #3498db;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        body.dark-theme nav a {
+            color: #ecf0f1;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        body.dark-theme nav a:hover {
+            color: #3498db;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        body.dark-theme nav a::after {
+            background-color: #3498db;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-theme .theme-toggle {
+            color: #ecf0f1;
+        }
+
+        .theme-toggle:hover {
+            color: #667eea;
+        }
+
+        body.dark-theme .theme-toggle:hover {
+            color: #3498db;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        body.dark-theme .mobile-menu span {
+            background-color: #ecf0f1;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-theme .page-header {
+            background: rgba(52, 73, 94, 0.3);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ministries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .ministry-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-theme .ministry-card {
+            background: rgba(52, 73, 94, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ministry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .ministry-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .ministry-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .ministry-kids .ministry-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .ministry-youth .ministry-icon {
+            background: linear-gradient(135deg, #4834d4, #686de0);
+        }
+
+        .ministry-women .ministry-icon {
+            background: linear-gradient(135deg, #ff9ff3, #f368e0);
+        }
+
+        .ministry-men .ministry-icon {
+            background: linear-gradient(135deg, #54a0ff, #2e86de);
+        }
+
+        .ministry-music .ministry-icon {
+            background: linear-gradient(135deg, #5f27cd, #341f97);
+        }
+
+        .ministry-prayer .ministry-icon {
+            background: linear-gradient(135deg, #00d2d3, #01a3a4);
+        }
+
+        .ministry-missions .ministry-icon {
+            background: linear-gradient(135deg, #ff6348, #e17055);
+        }
+
+        .ministry-social .ministry-icon {
+            background: linear-gradient(135deg, #a55eea, #8c7ae6);
+        }
+
+        .ministry-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+
+        body.dark-theme .ministry-title {
+            color: #ecf0f1;
+        }
+
+        .ministry-content p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        body.dark-theme .ministry-content p {
+            color: #bdc3c7;
+        }
+
+        .ministry-details {
+            list-style: none;
+        }
+
+        .ministry-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        body.dark-theme .ministry-details li {
+            color: #95a5a6;
+        }
+
+        .ministry-details i {
+            margin-right: 0.5rem;
+            color: #667eea;
+            width: 20px;
+        }
+
+        body.dark-theme .ministry-details i {
+            color: #3498db;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-theme .cta-section {
+            background: rgba(52, 73, 94, 0.3);
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-icons {
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #667eea;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .ministries-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .ministry-card {
+                padding: 1.5rem;
+            }
+
+            .cta-section h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-church"></i>
+                    IBR Lagoa Verde
+                </a>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../quem-somos/index.html">Quem Somos</a></li>
+                        <li><a href="../Ministérios/index.html">Ministérios</a></li>
+                        <li><a href="../Horarios/index.html">Horários</a></li>
+                        <li><a href="../localização/index.html">Localização</a></li>
+                        <li><a href="../contacto/index.html">Contato</a></li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle">
+                    <span id="theme-icon">&#x263C;</span>
+                </button>
+                <div class="mobile-menu" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Nossos Ministérios</h1>
+                <p>Descubra como você pode servir a Deus e fazer a diferença em nossa comunidade através dos diversos ministérios da Igreja Batista Regular de Lagoa Verde.</p>
+            </div>
+
+            <div class="ministries-grid">
+                <!-- Ministério Kids -->
+                <div class="ministry-card ministry-kids">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério Kids</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Dedicado ao ensino e cuidado das crianças, proporcionando um ambiente seguro e divertido para o aprendizado bíblico.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Crianças de 3 a 12 anos</li>
+                            <li><i class="fas fa-clock"></i> Domingos às 9h e 19h</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Sala infantil</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Jovens -->
+                <div class="ministry-card ministry-youth">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Jovens</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Focado no desenvolvimento espiritual e social dos jovens, com atividades dinâmicas e estudos bíblicos relevantes.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Jovens de 13 a 30 anos</li>
+                            <li><i class="fas fa-clock"></i> Sábados às 19h</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Salão de jovens</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Mulheres -->
+                <div class="ministry-card ministry-women">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Mulheres</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Um espaço de comunhão, crescimento espiritual e apoio mútuo entre as mulheres da igreja.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Mulheres de todas as idades</li>
+                            <li><i class="fas fa-clock"></i> Quintas-feiras às 19h30</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Sala de reuniões</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Homens -->
+                <div class="ministry-card ministry-men">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-male"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Homens</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Fortalecendo os homens em sua jornada de fé, liderança e responsabilidade familiar e comunitária.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Homens de todas as idades</li>
+                            <li><i class="fas fa-clock"></i> Primeiro sábado do mês às 8h</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Auditório principal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Música -->
+                <div class="ministry-card ministry-music">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Música</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Conduzindo a congregação em adoração através da música, com coral e banda de instrumentos.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Para músicos e vocalistas</li>
+                            <li><i class="fas fa-clock"></i> Ensaios: Quartas às 20h</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Auditório principal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Oração -->
+                <div class="ministry-card ministry-prayer">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Oração</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Dedicado a interceder pelas necessidades da igreja, comunidade e do mundo.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Para todos os membros</li>
+                            <li><i class="fas fa-clock"></i> Terças-feiras às 19h</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Capela de oração</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério de Missões -->
+                <div class="ministry-card ministry-missions">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério de Missões</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Comprometido em espalhar o evangelho localmente e globalmente através de projetos missionários.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Para todos os membros</li>
+                            <li><i class="fas fa-clock"></i> Reuniões mensais</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Sala de missões</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ministério Social -->
+                <div class="ministry-card ministry-social">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="ministry-title">Ministério Social</h3>
+                    </div>
+                    <div class="ministry-content">
+                        <p>Servindo a comunidade com ações sociais, distribuição de alimentos e apoio às famílias necessitadas.</p>
+                        <ul class="ministry-details">
+                            <li><i class="fas fa-users"></i> Voluntários de todas as idades</li>
+                            <li><i class="fas fa-clock"></i> Atividades variadas</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Comunidade local</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3>Quer participar de algum ministério?</h3>
+                <p>Entre em contato conosco para saber mais sobre como você pode se envolver e fazer a diferença em nossa comunidade.</p>
+                <a href="../contacto/index.html" class="btn">Entre em Contato</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ibrlagoaverde/photos?locale=pt_BR" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ibrlagoaverde/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@IBRLagoaVerde" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+            <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+        
+        // Adicionar sombra ao header quando scrollar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Função para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+            }
+        });
+    </script>
+</body>
+</html>
