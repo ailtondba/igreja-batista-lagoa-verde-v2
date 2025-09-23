@@ -100,6 +100,7 @@
             color: #4a9eff;
         }
 
+<<<<<<< HEAD
         body.dark-theme nav ul li a::after {
             background-color: #4a9eff;
         }
@@ -138,13 +139,57 @@
 
         body.dark-theme .social-icon span {
             color: #ffffff;
+=======
+        body.dark-theme nav ul li a.active {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle {
+            background: #2d2d2d;
+            color: #4a9eff;
+            border-color: #4a9eff;
+        }
+
+        body.dark-theme .contact {
+            background-color: #1a1a1a;
+        }
+
+        body.dark-theme .contact h2 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .contact-info {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .contact-info h3 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .contact-info p {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .contact-form {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .contact-form h3 {
+            color: #4a9eff;
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         }
 
         body.dark-theme .contact-form input,
         body.dark-theme .contact-form textarea {
+<<<<<<< HEAD
             background-color: #3d3d3d;
             color: #e0e0e0;
             border-color: #555;
+=======
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            border-color: #444;
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         }
 
         body.dark-theme .contact-form input:focus,
@@ -152,6 +197,7 @@
             border-color: #4a9eff;
         }
 
+<<<<<<< HEAD
         /* Responsividade */
          @media (max-width: 768px) {
              .theme-toggle {
@@ -178,6 +224,11 @@
                  margin-right: 50px;
              }
          }
+=======
+        body.dark-theme footer {
+            background-color: #2d2d2d;
+        }
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         
         .logo {
             display: flex;
@@ -215,6 +266,56 @@
             flex-shrink: 1;
             margin-right: 70px;
         }
+<<<<<<< HEAD
+=======
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+                right: -50px;
+            }
+            
+            nav {
+                margin-right: 60px;
+            }
+            
+            /* Ocultar texto da igreja no mobile - manter apenas logo e menu */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo {
+                max-width: none;
+            }
+            
+            .logo img {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                width: 22px;
+                height: 22px;
+                font-size: 13px;
+                right: -40px;
+            }
+            
+            nav {
+                margin-right: 50px;
+            }
+            
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+        }
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         
         nav ul {
             display: flex;
@@ -256,6 +357,7 @@
             width: 100%;
         }
         
+<<<<<<< HEAD
         /* Conteúdo principal */
         .main-content {
             max-width: 1200px;
@@ -350,13 +452,134 @@
         .social-icon span {
             font-weight: 600;
             font-size: 0.9rem;
+=======
+        /* Seção de contato */
+        .contact {
+            padding: 120px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #1a4c7b;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #1a4c7b;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #1a4c7b;
+            margin-right: 20px;
+            width: 30px;
+        }
+        
+        .contact-item p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            color: #1a4c7b;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a4c7b;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a4c7b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: #143a5f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         }
         
         /* Rodapé */
         footer {
             background-color: #1a4c7b;
             color: white;
+<<<<<<< HEAD
             text-align: center;
+=======
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             padding: 40px 20px;
             margin-top: 50px;
         }
@@ -364,6 +587,7 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+<<<<<<< HEAD
         }
         
         .footer-social {
@@ -371,13 +595,44 @@
         }
         
         .footer-social a {
+=======
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            padding: 0 320px 0 320px;
+        }
+        
+        .footer-left {
+            flex: 1;
+        }
+        
+        .footer-right {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 280px;
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             color: white;
             font-size: 1.8rem;
             margin: 0 15px;
             transition: transform 0.3s;
         }
         
+<<<<<<< HEAD
         .footer-social a:hover {
+=======
+        .social-icons a:hover {
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             transform: translateY(-5px);
         }
         
@@ -386,6 +641,95 @@
             font-size: 1.1rem;
         }
         
+<<<<<<< HEAD
+=======
+        .radio-player {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+        }
+        
+        .radio-player #playBtn {
+            background-color: #FEA700;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .radio-player #playBtn:hover {
+            background-color: #e6950a;
+        }
+        
+        .radio-player #volume {
+            width: 60px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .radio-player #volume::-webkit-slider-thumb {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #FEA700;
+            cursor: pointer;
+        }
+        
+        .radio-player #volume::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #FEA700;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .radio-player h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #FEA700;
+        }
+        
+        /* Responsividade do rodapé */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 0;
+            }
+            
+            .footer-left {
+                flex: none;
+                width: 100%;
+            }
+            
+            .footer-right {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+        
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         /* Menu responsivo */
         .menu-toggle {
             display: none;
@@ -402,6 +746,15 @@
             border-radius: 2px;
         }
         
+<<<<<<< HEAD
+=======
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         /* Responsividade */
         @media (max-width: 1100px) {
             .logo h1 {
@@ -428,6 +781,7 @@
         }
         
         @media (max-width: 768px) {
+<<<<<<< HEAD
             /* Ocultar texto da igreja no mobile - manter apenas logo e menu */
             .logo h1,
             .logo .verse {
@@ -442,6 +796,8 @@
                 margin-right: 0;
             }
             
+=======
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             .menu-toggle {
                 display: flex;
             }
@@ -471,6 +827,7 @@
                 margin: 15px 0;
             }
             
+<<<<<<< HEAD
             .page-header h1 {
                 font-size: 2.2rem;
             }
@@ -487,6 +844,11 @@
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
+=======
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             }
         }
         
@@ -500,6 +862,7 @@
                 margin-right: 10px;
             }
             
+<<<<<<< HEAD
             .social-icons {
                 flex-wrap: wrap;
                 gap: 20px;
@@ -507,10 +870,24 @@
             
             .address {
                 font-size: 1.1rem;
+=======
+            .contact {
+                padding: 100px 5% 60px;
+            }
+            
+            .contact h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             }
         }
         
         @media (max-width: 480px) {
+<<<<<<< HEAD
             .page-header h1 {
                 font-size: 1.8rem;
             }
@@ -533,6 +910,15 @@
             
             .social-icon span {
                 font-size: 0.8rem;
+=======
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+                margin-right: 10px;
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
             }
         }
     </style>
@@ -561,11 +947,16 @@
                     <li><a href="../Ministérios/index.html">Ministérios</a></li>
                     <li><a href="../Horarios/index.html">Horários</a></li>
                     <li><a href="../localização/index.html">Localização</a></li>
+<<<<<<< HEAD
                     <li><a href="../contacto/index.html" class="active">Contato</a></li>
+=======
+                    <li><a href="index.html" class="active">Contato</a></li>
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
                 </ul>
             </nav>
             
             <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+<<<<<<< HEAD
              <span id="theme-icon">&#x263C;</span>
          </button>
         </div>
@@ -623,6 +1014,96 @@
             </div>
             <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
             <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+=======
+                <span id="theme-icon">&#x263C;</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="contact">
+        <h2>Entre em Contato</h2>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informações de Contato</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Rua São Vicente, 74 - São Lázaro<br>Manaus - AM</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>(92) 99999-9999</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>contato@igrejalagoa.com.br</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Horários de Atendimento:<br>
+                    Segunda a Sexta: 8h às 17h<br>
+                    Sábado: 8h às 12h</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Envie sua Mensagem</h3>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+                <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+            </div>
+            <div class="footer-right">
+                <div class="radio-player">
+                    <button id="playBtn">⏸</button>
+                    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.1">
+                    <audio id="radio" src="https://cast3.hoost.com.br:8687/stream" autoplay></audio>
+                </div>
+            </div>
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
         </div>
     </footer>
 
@@ -683,6 +1164,12 @@
                 themeIcon.innerHTML = '&#x263C;'; // Sol
             }
         });
+<<<<<<< HEAD
+=======
+
+        // Player de Rádio
+        const audio=document.getElementById("radio"),playBtn=document.getElementById("playBtn"),volume=document.getElementById("volume");audio.volume=0.1;let isPlaying=true;playBtn.addEventListener("click",()=>{if(isPlaying){audio.pause();playBtn.textContent="▶"}else{audio.play();playBtn.textContent="⏸"}isPlaying=!isPlaying});volume.addEventListener("input",()=>audio.volume=volume.value);
+>>>>>>> 4429d0409503364f1e45fb58a31849f0f9cbb6bd
     </script>
 </body>
 </html>
