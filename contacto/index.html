@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Igreja Batista Regular de Lagoa Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* Cabeçalho e menu */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Botão de tema */
+        .theme-toggle {
+             position: absolute;
+             right: -60px;
+             top: 50%;
+             transform: translateY(-50%);
+             width: 30px;
+             height: 30px;
+             border: 1px solid #007bff;
+             border-radius: 50%;
+             background: white;
+             color: #007bff;
+             font-size: 18px;
+             cursor: pointer;
+             padding: 0;
+             outline: none;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .theme-toggle span {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             width: 100%;
+             height: 100%;
+             line-height: 1;
+             font-size: 18px;
+             position: relative;
+             top: 0px;
+         }
+
+        /* Tema escuro */
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme header {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .logo h1 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .logo .verse {
+            color: #b0b0b0;
+        }
+
+        body.dark-theme nav ul li a {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme nav ul li a:hover {
+            color: #4a9eff;
+        }
+
+        body.dark-theme nav ul li a.active {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle {
+            background: #2d2d2d;
+            color: #4a9eff;
+            border-color: #4a9eff;
+        }
+
+        body.dark-theme .contact {
+            background-color: #1a1a1a;
+        }
+
+        body.dark-theme .contact h2 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .contact-info {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .contact-info h3 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .contact-info p {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .contact-form {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .contact-form h3 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .contact-form input,
+        body.dark-theme .contact-form textarea {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        body.dark-theme .contact-form input:focus,
+        body.dark-theme .contact-form textarea:focus {
+            border-color: #4a9eff;
+        }
+
+        body.dark-theme footer {
+            background-color: #2d2d2d;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            flex-shrink: 0;
+            max-width: 50%;
+        }
+        
+        .logo img {
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            color: #1a4c7b;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        
+        .logo .verse {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 2px;
+            line-height: 1.2;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        nav {
+            margin-left: 40px;
+            flex-shrink: 1;
+            margin-right: 70px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+                right: -50px;
+            }
+            
+            nav {
+                margin-right: 60px;
+            }
+            
+            /* Ocultar texto da igreja no mobile - manter apenas logo e menu */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo {
+                max-width: none;
+            }
+            
+            .logo img {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                width: 22px;
+                height: 22px;
+                font-size: 13px;
+                right: -40px;
+            }
+            
+            nav {
+                margin-right: 50px;
+            }
+            
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            color: #1a4c7b;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #1a4c7b;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Seção de contato */
+        .contact {
+            padding: 120px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #1a4c7b;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #1a4c7b;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #1a4c7b;
+            margin-right: 20px;
+            width: 30px;
+        }
+        
+        .contact-item p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            color: #1a4c7b;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a4c7b;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a4c7b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: #143a5f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #1a4c7b;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            padding: 0 320px 0 320px;
+        }
+        
+        .footer-left {
+            flex: 1;
+        }
+        
+        .footer-right {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 280px;
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        footer p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .radio-player {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+        }
+        
+        .radio-player #playBtn {
+            background-color: #FEA700;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .radio-player #playBtn:hover {
+            background-color: #e6950a;
+        }
+        
+        .radio-player #volume {
+            width: 60px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .radio-player #volume::-webkit-slider-thumb {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #FEA700;
+            cursor: pointer;
+        }
+        
+        .radio-player #volume::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #FEA700;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .radio-player h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #FEA700;
+        }
+        
+        /* Responsividade do rodapé */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 0;
+            }
+            
+            .footer-left {
+                flex: none;
+                width: 100%;
+            }
+            
+            .footer-right {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+        
+        /* Menu responsivo */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul li {
+                margin-left: 12px;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.4s;
+                margin-left: 0;
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+                margin-right: 10px;
+            }
+            
+            .contact {
+                padding: 100px 5% 60px;
+            }
+            
+            .contact h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../logo/logo-igreja.png" alt="Logo Igreja Batista Regular de Lagoa Verde">
+                <div>
+                    <h1>Igreja Batista Regular de Lagoa Verde</h1>
+                    <p class="verse">"Alegrei-me quando me disseram: Vamos à casa do Senhor" Salmos 122:1</p>
+                </div>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../quem-somos/index.html">Quem Somos</a></li>
+                    <li><a href="../Ministérios/index.html">Ministérios</a></li>
+                    <li><a href="../Horarios/index.html">Horários</a></li>
+                    <li><a href="../localização/index.html">Localização</a></li>
+                    <li><a href="index.html" class="active">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                <span id="theme-icon">&#x263C;</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="contact">
+        <h2>Entre em Contato</h2>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informações de Contato</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Rua São Vicente, 74 - São Lázaro<br>Manaus - AM</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>(92) 99999-9999</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>contato@igrejalagoa.com.br</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Horários de Atendimento:<br>
+                    Segunda a Sexta: 8h às 17h<br>
+                    Sábado: 8h às 12h</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Envie sua Mensagem</h3>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+                <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+            </div>
+            <div class="footer-right">
+                <div class="radio-player">
+                    <button id="playBtn">⏸</button>
+                    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.1">
+                    <audio id="radio" src="https://cast3.hoost.com.br:8687/stream" autoplay></audio>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+        
+        // Adicionar sombra ao header quando scrollar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Função para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+            }
+        });
+
+        // Player de Rádio
+        const audio=document.getElementById("radio"),playBtn=document.getElementById("playBtn"),volume=document.getElementById("volume");audio.volume=0.1;let isPlaying=true;playBtn.addEventListener("click",()=>{if(isPlaying){audio.pause();playBtn.textContent="▶"}else{audio.play();playBtn.textContent="⏸"}isPlaying=!isPlaying});volume.addEventListener("input",()=>audio.volume=volume.value);
+    </script>
+</body>
+</html>
