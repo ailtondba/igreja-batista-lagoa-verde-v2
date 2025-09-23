@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horários - Igreja Batista Regular de Lagoa Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* Cabeçalho e menu */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Botão de tema */
+        .theme-toggle {
+             position: absolute;
+             right: -60px;
+             top: 50%;
+             transform: translateY(-50%);
+             width: 30px;
+             height: 30px;
+             border: 1px solid #007bff;
+             border-radius: 50%;
+             background: white;
+             color: #007bff;
+             font-size: 18px;
+             cursor: pointer;
+             padding: 0;
+             outline: none;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .theme-toggle span {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             width: 100%;
+             height: 100%;
+             line-height: 1;
+             font-size: 18px;
+             position: relative;
+             top: 0px;
+         }
+
+        /* Tema escuro */
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme header {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .logo h1 {
+            color: #4a9eff;
+        }
+
+        body.dark-theme .logo .verse {
+            color: #b0b0b0;
+        }
+
+        body.dark-theme nav ul li a {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme nav ul li a:hover {
+            color: #4a9eff;
+        }
+
+        body.dark-theme nav ul li a::after {
+            background-color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle {
+            border-color: #4a9eff;
+            color: #4a9eff;
+        }
+
+        body.dark-theme .theme-toggle:hover {
+            background-color: #4a9eff;
+            color: #1a1a1a;
+        }
+
+        body.dark-theme .schedule-card {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark-theme .schedule-card h3 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .page-header h1 {
+            color: #ffffff;
+        }
+
+        body.dark-theme .day-title {
+            color: #ffffff;
+        }
+
+        body.dark-theme .time {
+            color: #ffffff;
+        }
+
+        body.dark-theme .day-schedule {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .activity-title {
+            color: #ffffff;
+        }
+
+        body.dark-theme .activity-description {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .alternating .activity-description {
+            color: #ffa726;
+        }
+
+        body.dark-theme footer {
+            background-color: #1a1a1a;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            flex-shrink: 0;
+            max-width: 50%;
+        }
+        
+        .logo img {
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            color: #1a4c7b;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        
+        .logo .verse {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 2px;
+            line-height: 1.2;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        nav {
+            margin-left: 40px;
+            flex-shrink: 1;
+            margin-right: 70px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            color: #1a4c7b;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #1a4c7b;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Conteúdo principal */
+        .main-content {
+            max-width: 1000px;
+            margin: 140px auto 60px;
+            padding: 0 8%;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.2rem;
+            color: #1a4c7b;
+            margin-bottom: 10px;
+        }
+        
+        .schedule-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .day-schedule {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .day-title {
+            font-size: 1.4rem;
+            color: #1a4c7b;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .activities {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .activity {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .time {
+            min-width: 70px;
+            font-weight: 600;
+            color: #1a4c7b;
+            font-size: 1rem;
+        }
+        
+        .activity-details {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #2c3e50;
+        }
+        
+        .activity-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+        
+        .alternating .activity-description {
+            color: #e67e22;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #1a4c7b;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .footer-social {
+            margin-bottom: 15px;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 12px;
+        }
+        
+        footer p {
+            margin: 8px 0;
+            font-size: 1rem;
+        }
+        
+        /* Menu responsivo */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            nav ul li a {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul li {
+                margin-left: 12px;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Ocultar texto da igreja no mobile - manter apenas logo e menu */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo {
+                max-width: none;
+            }
+            
+            .logo img {
+                margin-right: 0;
+            }
+            
+            .theme-toggle {
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+                right: -50px;
+            }
+            
+            nav {
+                margin-right: 60px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.4s;
+                margin-left: 0;
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul li {
+                margin: 12px 0;
+                margin-left: 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .day-schedule {
+                padding: 15px;
+            }
+            
+            .day-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .activity {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .time {
+                min-width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .theme-toggle {
+                width: 22px;
+                height: 22px;
+                font-size: 13px;
+                right: -40px;
+            }
+            
+            nav {
+                margin-right: 50px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+            
+            /* Garantir que texto continue oculto em telas menores */
+            .logo h1,
+            .logo .verse {
+                display: none;
+            }
+            
+            .activity-title {
+                font-size: 1rem;
+            }
+            
+            .time {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../logo/logo-igreja.png" alt="Logo Igreja Batista Regular de Lagoa Verde">
+                <div>
+                    <h1>Igreja Batista Regular de Lagoa Verde</h1>
+                    <p class="verse">"Alegrei-me quando me disseram: Vamos à casa do Senhor" Salmos 122:1</p>
+                </div>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../quem-somos/index.html">Quem Somos</a></li>
+                    <li><a href="../Ministérios/index.html">Ministérios</a></li>
+                    <li><a href="../Horarios/index.html" class="active">Horários</a></li>
+                    <li><a href="../localização/index.html">Localização</a></li>
+                    <li><a href="../contacto/index.html">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                <span id="theme-icon">&#x263C;</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Horários de Cultos e Atividades</h1>
+        </div>
+        
+        <div class="schedule-container">
+            <!-- Terça-feira -->
+            <div class="day-schedule">
+                <h2 class="day-title">Terça-feira</h2>
+                <div class="activities">
+                    <div class="activity">
+                        <div class="time">15h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Culto de Oração</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quinta-feira -->
+            <div class="day-schedule">
+                <h2 class="day-title">Quinta-feira</h2>
+                <div class="activities">
+                    <div class="activity">
+                        <div class="time">19h30</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Culto de Oração</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sexta-feira -->
+            <div class="day-schedule">
+                <h2 class="day-title">Sexta-feira</h2>
+                <div class="activities">
+                    <div class="activity">
+                        <div class="time">17h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Reunião do Grupo de Estudo Feminilidade Bíblica</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sábado -->
+            <div class="day-schedule">
+                <h2 class="day-title">Sábado</h2>
+                <div class="activities">
+                    <div class="activity">
+                        <div class="time">16h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Mensageiras do Rei</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity alternating">
+                        <div class="time">16h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Amigos de Missões</div>
+                            <div class="activity-description">(a cada 14 dias)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity alternating">
+                        <div class="time">16h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Ministério de Mulheres</div>
+                            <div class="activity-description">(a cada 14 dias)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity alternating">
+                        <div class="time">16h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Ministério de Homens</div>
+                            <div class="activity-description">(a cada 14 dias)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity">
+                        <div class="time">19h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Grupo de Jovens</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Domingo -->
+            <div class="day-schedule">
+                <h2 class="day-title">Domingo</h2>
+                <div class="activities">
+                    <div class="activity">
+                        <div class="time">18h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Escola Bíblica Dominical</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity">
+                        <div class="time">19h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Culto da Família</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity">
+                        <div class="time">19h</div>
+                        <div class="activity-details">
+                            <div class="activity-title">Culto Infantil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://www.facebook.com/ibrlagoaverde/photos?locale=pt_BR" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ibrlagoaverde/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@IBRLagoaVerde" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>Igreja Batista Regular de Lagoa Verde © 2025 - Todos os direitos reservados</p>
+            <p>Rua São Vicente, 74 - São Lázaro, Manaus - AM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Função para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.innerHTML = '&#x263D;'; // Lua
+            } else {
+                themeIcon.innerHTML = '&#x263C;'; // Sol
+            }
+        });
+    </script>
+</body>
+</html>
