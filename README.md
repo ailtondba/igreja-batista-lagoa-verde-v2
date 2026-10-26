@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🏛️ Igreja Batista Regular de Lagoa Verde - Website Oficial
 
 [![Deploy Status](https://img.shields.io/badge/Deploy-Live-brightgreen)](https://code-49bf4.web.app)
